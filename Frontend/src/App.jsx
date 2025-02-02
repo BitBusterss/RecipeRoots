@@ -8,7 +8,7 @@ import axios from 'axios'
 const getAllRecipes=async()=>{
   let allRecipes=[]
   await axios.get('http://localhost:5000/recipe').then(res=>{
-    allRecipe=res.data
+    allRecipes=res.data
   })
   return allRecipes
 }
@@ -16,7 +16,10 @@ const getAllRecipes=async()=>{
 
 const router = createBrowserRouter([
    {path:"/",element:<MainNavigation/>,children:[
-   {path:"/",element:<Home/>,loader:getAllRecipes}
+   {path:"/",element:<Home/>,loader:getAllRecipes},
+   {path:"/myRecipe",element:<Home/>},
+   {path:"fav/Recipe",element:<Home/>},
+   
 ]}  
   
 ])
