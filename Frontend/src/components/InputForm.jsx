@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import './InputForm.css'
 export default function InputForm({setIsOpen}) {
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
