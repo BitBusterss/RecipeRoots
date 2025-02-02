@@ -1,4 +1,5 @@
 import React from 'react'
+import RecipeItems from "../components/RecipeItems"
 import foodImg from '../assets/foodImg.jpg'
 import Footer from '../components/Footer'
 
@@ -22,7 +23,7 @@ function Home() {
     </div>
    
    <div className="recipe">
-
+        <RecipeItems/>
    </div>
     </>
   )
