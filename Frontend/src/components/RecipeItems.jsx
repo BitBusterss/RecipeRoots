@@ -9,13 +9,13 @@ export default function RecipeItems() {
     console.log(allRecipes)
     return (
         <>
-        <div className="card-container">
+        <div className='card-container'>
             {
                 allRecipes?.map((item,index)=>{
                     return(
                         <div key={index} className='card'>
                             <img src={foodImg} width="120px" height="100px"></img>
-                            <div className="card-body">
+                            <div className='card-body'>
                                 <div className="title">{item.title}</div>
                                 <div className="icons">
                                     <div className="timer"><BsFillStopwatchFill />30min</div>
