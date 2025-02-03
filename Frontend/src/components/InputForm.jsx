@@ -9,7 +9,7 @@ export default function InputForm({setIsOpen}) {
 
     const handleOnSubmit=async(e)=>{
         e.preventDefault()
-        let endpoint=(isSignup) ? "signUp" : "login"
+        let endpoint=(isSignUp) ? "signUp" : "login"
         await axios.post(`http://localhost:5000/${endpoint}`,{email,password})
         .then((res)=>{
             localStorage.setItem("token",res.data.token)
