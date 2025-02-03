@@ -7,8 +7,7 @@ export default function Modal({children,onClose}) {
             <div className="backdrop" onClick={onClose}> </div>
                 <dialog className='modal' open>
                     {children}
-                </dialog>
-           
+                </dialog>   
         </>
     )
 }

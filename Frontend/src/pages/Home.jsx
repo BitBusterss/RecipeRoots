@@ -9,7 +9,7 @@ function Home() {
    
     <section>
         <div className='left'>
-           <h1>Easy Recipes for any  <strong>OCCASION</strong></h1>
+           <h1>Easy Recipes for any<strong>OCCASION</strong></h1>
            <h5>Welcome to <strong>RECIPE ROOTS</strong> discover a variety of delicious recipe, from quick meals to gourmet delights. Explore diverse cuisines, follow step-by-step guides,and even share your own recipes with our foodie community. Join us and bring the joy of cooking into your kitchen!</h5>
            <button style={{ color: 'white', backgroundColor: 'black' }}>Share your recipe</button>
 
