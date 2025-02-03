@@ -53,3 +53,38 @@
     color:red;
     font-size: 13px;
   }
+@media (max-width: 900px) {
+  .form {
+      width: 90%;
+  }
+
+  .form-control {
+      flex-direction: column;
+      gap: 0.5rem;
+  }
+
+  .form-control .input,
+  .form-control .input-textarea {
+      flex-basis: 100%;
+  }
+
+  .form button {
+      width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .form {
+      width: 95%;
+      padding: 0.5rem;
+  }
+
+  .form-control {
+      gap: 0.5rem;
+  }
+
+  .form button {
+      font-size: 13px;
+      padding: 8px;
+  }
+}
