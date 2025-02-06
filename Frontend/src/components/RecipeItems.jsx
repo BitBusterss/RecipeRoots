@@ -15,7 +15,7 @@ export default function RecipeItems() {
                 allRecipes?.map((item,index)=>{
                     return(
                         <div key={index} className='card'>
-                            <img src={foodImg} width="300px" height="250px"></img>
+                            <img src={`http://localhost:5000/images/${item.coverImage}`} width="300px" height="250px"></img>
                             <div className='card-body'>
                                 <div className="title">{item.title}</div>
                                 <div className="icons">
