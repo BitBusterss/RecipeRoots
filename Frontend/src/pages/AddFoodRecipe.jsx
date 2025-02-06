@@ -4,22 +4,62 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function AddFoodRecipe() {
-    const [recipeData,setRecipeData]=useState({})
-    const navigate=useNavigate()
+    const [recipeData,setRecipeData]=useState({
+        title: '',
+        time: '',
+        ingredients: [],
+        instructions: '',
+        file: null
+    });
+    const navigate=useNavigate();
+
     const onHandleChange=(e)=>{
-        console.log(e.target.files[0])
-        let val=(e.target.name==="ingredients")?e.target.value.split(","):(e.target.name==="file")? e.target.files[0]: e.target.value
-        setRecipeData(pre=>({...pre,[e.target.name]:val}))
-    }
-    const onHandleSubmit=async(e)=>{
-        e.preventDefault()
-        console.log(recipeData)
-        await axios.post("http://localhost:5000/recipe",recipeData,{
-            headers:{
-                'Content-Type': 'multipart/form-data'
+        
+        let value;
+        if(e.target.name==="ingredients")
+            {
+               value= e.target.value.split(",");
+            } 
+        else if (e.target.name==="file")
+            {
+              value= e.target.files[0];
+            } 
+            else
+            {
+               value= e.target.value;
             }
-        })
-        .then(()=>navigate("/"))
+        setRecipeData(prev=>({...prev,[e.target.name]:value}));
+    };
+    const onHandleSubmit=async(e)=>{
+        e.preventDefault();
+       
+        console.log("Form data:",recipeData);
+
+        const formData = new FormData();
+
+        formData.append("title", recipeData.title );
+        formData.append("time", recipeData.time );
+        formData.append("ingredients",  recipeData.ingredients.join(","));
+        formData.append("instructions", recipeData.instructions);
+        
+        
+        if (recipeData.file) {
+            formData.append("file", recipeData.file);
+        }
+
+        console.log("Submitting FormData:", [...formData]); // Debugging
+        try{
+        const response=await axios.post("http://localhost:5000/recipe",formData,{
+            headers:{
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+        console.log("upload success:",response.data);
+        navigate("/");
+    }
+    catch(error){
+        console.error("Error uploading recipe:",error.response?.data||error.message)
+    }
     }
   return (
     <>
@@ -27,19 +67,19 @@ export default function AddFoodRecipe() {
         <form className='form' onSubmit={onHandleSubmit}>
             <div className='form-control'>
                 <label>Title</label>
-                <input type="text" className='input' name='title' onChange={onHandleChange}></input>
+                <input type="text" className='input' name='title' value={recipeData.title} onChange={onHandleChange}></input>
             </div>
             <div className='form-control'>
                 <label>Time</label>
-                <input type="text" className='input' name='time' onChange={onHandleChange}></input>
+                <input type="text" className='input' name='time'value={recipeData.time} onChange={onHandleChange}></input>
             </div>
             <div className='form-control'>
                 <label>Ingredients</label>
-                <textarea type="text" className='input-textarea' name='ingredients' rows='5' onChange={onHandleChange}></textarea>       
+                <textarea type="text" className='input-textarea' name='ingredients' rows='5' value={recipeData.ingredients.join(",")} onChange={onHandleChange}></textarea>       
             </div>
             <div className='form-control'>
                 <label>Instructions</label>
-                <textarea type="text" className='input-textarea' name='instructions' rows='5' onChange={onHandleChange}></textarea>
+                <textarea type="text" className='input-textarea' name='instructions' rows='5' value={recipeData.instructions} onChange={onHandleChange}></textarea>
             </div>
             <div className='form-control'>
                 <label>Recipe Image</label>
@@ -49,6 +89,5 @@ export default function AddFoodRecipe() {
         </form>
         </div>
         </>
-    
-  )
+  );
 }
