@@ -20,6 +20,10 @@ const recipeSchema=mongoose.Schema({
     Image:{
         type:String,
     },
+    createdBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }
 
 },{timestamps:true})
 

@@ -10,6 +10,8 @@ export default function Navbar() {
   let token = localStorage.getItem("token");
   const [isLogin, setIsLogin] = useState(token ? false : true);
 
+  let user=JSON.parse(localStorage.getItem("user"))
+
   useEffect(() => {
     setIsLogin(token ? false : true);
   }, [token]);
@@ -57,7 +59,7 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li onClick={checkLogin}>
-            <NavLink className="login">{isLogin ? "Login" : "Logout"}</NavLink>
+            <NavLink className="login">{isLogin ? "Login" : "Logout"}{user?.email?`  ${user?.email}`:""}</NavLink>
           </li>
         </ul>
       </header>
