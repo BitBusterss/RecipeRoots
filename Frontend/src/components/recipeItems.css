@@ -2,12 +2,14 @@
     width:80%;
     margin: auto;
     display: grid;
-    gap:150px;
+    justify-content: center;
+    align-items: start;
+    gap: 40px 140px;
     grid-template-columns: repeat(auto-fit,13rem);
     cursor:pointer;
     margin-bottom: 20px;
     margin-top: 20px;
-    margin-left: 10px;
+    margin-left: 90px;
   }
 
   .card{

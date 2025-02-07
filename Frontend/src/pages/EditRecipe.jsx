@@ -71,11 +71,16 @@ export default function EditRecipe() {
             },
         });
         console.log("upload success:",response.data);
+<<<<<<< Updated upstream
         navigate("/myRecipe");
+=======
+    
+>>>>>>> Stashed changes
     }
     catch(error){
         console.error("Error uploading recipe:",error.response?.data||error.message)
     }
+    
     }
   return (
     <>
