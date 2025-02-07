@@ -7,7 +7,7 @@ header {
   position: fixed;
   top: 0;
   z-index: 10;
-  background-color: #359f5d;
+  background-color:#3cb371;
   padding: 10px;
 }
 
@@ -15,16 +15,16 @@ header h2 {
   font-size: 26px;
   margin-left: 1rem;
   color: white;
-  background-color: #359f5d;
+  background-color:#3cb371;
 }
 header h2 i{
-  background-color: #359f5d;
+  background-color: #3cb371;
 }
 header ul {
   display: flex;
   list-style: none;
   gap: 15px;
-  background-color: #359f5d;
+  background-color: #3cb371;
 }
 
 header ul li {
